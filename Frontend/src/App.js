@@ -1,8 +1,7 @@
 import Login from "./Components/Auth/Login";
 import Signup from "./Components/Auth/Singnup";
-import Sidebar from "./Components/Institution/Sidebar/Sidebar";
 import Home from "./Components/Home"; // Corrected import statement
-import InstituteDashboard from "./Components/Institution/Sidebar/Inventory/Dashboard";
+import InstituteDashboard from "./Components/Institution/Sidebar/Dashboard/Dashboard";
 //import InstituteContainer from "./Components/Institution/InstituteContainer";
 //import Inventory from "./Components/Institution/Sidebar/Inventory";
 //import Orders from "./Components/Institution/Sidebar/Orders"

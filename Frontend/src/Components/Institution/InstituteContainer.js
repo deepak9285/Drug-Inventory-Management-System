@@ -2,7 +2,6 @@ import React from "react";
 import Sidebar from "./Sidebar/Sidebar";
 
 import { Outlet } from "react-router";
-import Dashboard from "./Sidebar/Inventory/Dashboard";
 function InstituteContainer() {
   return (
     <div className="border flex">
