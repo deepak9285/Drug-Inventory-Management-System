@@ -1,13 +1,13 @@
 // src/components/Login.js
 
-import React,{useState} from 'react';
-import { useNavigate } from 'react-router';
+import React, { useState } from "react";
+import { useNavigate } from "react-router";
 
 const Login = () => {
-  const [email,setEmail]=useState("");
-  const [password,setPassword]=useState("");
-  const [error,setError]=useState(null);
-  const [success,setSuccess]=useState(null);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,12 +24,13 @@ const Login = () => {
 
       if (!response.ok) {
         throw new Error("Login failed");
+        
       }
 
       const result = await response.json();
       setSuccess("User logged in successfully");
       console.log(result);
-      navigate("/app/Welcome");
+      navigate("/Institute");
 
       // Retrieve existing users from localStorage
       const existingUsersStr = localStorage.getItem("userData");
@@ -61,7 +62,7 @@ const Login = () => {
       }
       localStorage.setItem("currentUserEmail", result.user.email);
       // Store the updated list back in localStorage
-    //  localStorage.setItem("userData", JSON.stringify(existingUsers));
+      //  localStorage.setItem("userData", JSON.stringify(existingUsers));
     } catch (error) {
       console.error("Failed to login", error);
       setError("Failed to login user");
@@ -72,12 +73,17 @@ const Login = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-lg max-w-sm w-full">
-        <h2 className="text-2xl font-bold text-center text-indigo-600 mb-6">Login</h2>
-        <form>
+        <h2 className="text-2xl font-bold text-center text-indigo-600 mb-6">
+          Login
+        </h2>
+        <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block text-gray-700">Email</label>
             <input
               type="email"
+              id="email"
+              value={email}
+              onChange={(e)=>setEmail(e.target.value)}
               placeholder="Enter your email"
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"
             />
@@ -86,7 +92,11 @@ const Login = () => {
             <label className="block text-gray-700">Password</label>
             <input
               type="password"
+              id="password"
+              value={password}
+              onChange={(e)=>setPassword(e.target.value)}
               placeholder="Enter your password"
+              required
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-600"
             />
           </div>
@@ -97,8 +107,10 @@ const Login = () => {
             Login
           </button>
         </form>
+        {error && <p className="text-red-500 text-sm">{error}</p>}
+        {success && <p className="text-green-500 text-sm">{success}</p>}
         <p className="text-center text-gray-600 mt-4">
-          Don't have an account?{' '}
+          Don't have an account?{" "}
           <a href="/register" className="text-indigo-600 hover:underline">
             Register
           </a>
