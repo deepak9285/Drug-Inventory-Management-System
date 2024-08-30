@@ -15,7 +15,10 @@ import Vendors from "./Components/Institution/Sidebar/Vendors/VendorList";
 import MyOrders from "./Components/Institution/Sidebar/Orders/Orders";
 import Notifications from "./Components/Institution/Sidebar/RecommendationSystem/Notification";
 
+import {useNavigate} from "react-router-dom";
+
 function App() {
+  const navigate = useNavigate();
   return (
     <div className="App">
       <Routes>
