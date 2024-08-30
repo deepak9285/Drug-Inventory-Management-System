@@ -1,92 +1,54 @@
-import React from 'react';
+import React from "react";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from "recharts";
 
 const Dashboard = () => {
+  const data = [
+    { name: "Jan", consumption: 400 },
+    { name: "Feb", consumption: 300 },
+    { name: "Mar", consumption: 200 },
+    { name: "Apr", consumption: 278 },
+    { name: "May", consumption: 189 },
+    { name: "Jun", consumption: 239 },
+    { name: "Jul", consumption: 349 },
+    { name: "Aug", consumption: 200 },
+  ];
+
   return (
-    <div className="flex h-screen">
-      {/* Sidebar */}
-      {/* <div className="w-1/4 bg-gray-200 p-4">
-        <ul className="space-y-4">
-          <li className="text-xl font-semibold">Dashboard</li>
-          <li>Drug Inventory</li>
-          <li>My Orders</li>
-          <li>Analytics</li>
-          <li>Transactions</li>
-          <li>To Order List</li>
-          <li>Notifications</li>
-          <li>Vendors</li>
-          <li>Expiring Drugs</li>
-          <li>Emergency Orders</li>
-          <li>Chat Support</li>
-          <li>My Details</li>
-        </ul>
-      </div> */}
-
-      {/* Main Dashboard */}
-      <div className="w-3/4 bg-white p-8">
-        <h1 className="text-3xl font-bold mb-8">Dashboard</h1>
-        
-        {/* Overview Cards */}
-        <div className="grid grid-cols-4 gap-4 mb-8">
-          <div className="bg-gray-300 p-4 text-center">
-            <h2 className="text-xl font-semibold">Drugs</h2>
-            <p className="text-2xl">100</p>
-          </div>
-          <div className="bg-gray-300 p-4 text-center">
-            <h2 className="text-xl font-semibold">My Orders</h2>
-            <p className="text-2xl">21</p>
-          </div>
-          <div className="bg-gray-300 p-4 text-center">
-            <h2 className="text-xl font-semibold">To Order</h2>
-            <p className="text-2xl">10</p>
-          </div>
-          <div className="bg-gray-300 p-4 text-center">
-            <h2 className="text-xl font-semibold">Expiring Drugs (1 month)</h2>
-            <p className="text-2xl">23</p>
-          </div>
+    <div className="p-6 bg-gray-100 min-h-screen">
+      <div className="text-3xl font-bold mb-8">Dashboard</div>
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+        <div className="bg-green-500 text-white p-6 rounded-lg shadow-md flex flex-col items-center">
+          <div className="text-lg">Drugs</div>
+          <div className="text-3xl font-bold">100</div>
         </div>
-
-        {/* Consumption Data */}
-        <h2 className="text-xl font-semibold mb-4">Last 365 days consumption data</h2>
-        <div className="bg-white p-4 shadow-lg">
-          <LineChart />
+        <div className="bg-blue-500 text-white p-6 rounded-lg shadow-md flex flex-col items-center">
+          <div className="text-lg">My Orders</div>
+          <div className="text-3xl font-bold">21</div>
+        </div>
+        <div className="bg-orange-500 text-white p-6 rounded-lg shadow-md flex flex-col items-center">
+          <div className="text-lg">To Order</div>
+          <div className="text-3xl font-bold">10</div>
+        </div>
+        <div className="bg-red-500 text-white p-6 rounded-lg shadow-md flex flex-col items-center">
+          <div className="text-lg">Expiring Drugs (1 month)</div>
+          <div className="text-3xl font-bold">23</div>
         </div>
       </div>
+
+      <div className="bg-white p-6 rounded-lg shadow-md">
+        <div className="text-xl font-bold mb-4">Last 365 days consumption data</div>
+        <ResponsiveContainer width="100%" height={300}>
+          <LineChart data={data}>
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Line type="monotone" dataKey="consumption" stroke="#8884d8" activeDot={{ r: 8 }} />
+          </LineChart>
+        </ResponsiveContainer>
+      </div>
     </div>
-  );
-};
-
-// Mock Line Chart component
-const LineChart = () => {
-  return (
-    <svg viewBox="0 0 600 300" className="w-full h-64">
-      {/* X and Y axis */}
-      <line x1="50" y1="250" x2="550" y2="250" stroke="black" strokeWidth="2" />
-      <line x1="50" y1="250" x2="50" y2="50" stroke="black" strokeWidth="2" />
-
-      {/* Chart Data */}
-      <polyline
-        fill="none"
-        stroke="black"
-        strokeWidth="3"
-        points="50,240 100,220 150,200 200,190 250,210 300,200 350,160 400,150 450,180 500,140"
-      />
-
-      {/* Data Points */}
-      {[
-        [50, 240],
-        [100, 220],
-        [150, 200],
-        [200, 190],
-        [250, 210],
-        [300, 200],
-        [350, 160],
-        [400, 150],
-        [450, 180],
-        [500, 140]
-      ].map(([x, y], index) => (
-        <circle key={index} cx={x} cy={y} r="5" fill="black" />
-      ))}
-    </svg>
   );
 };
 
