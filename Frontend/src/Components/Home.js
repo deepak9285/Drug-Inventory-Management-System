@@ -2,7 +2,12 @@
 
 import React from "react";
 import LandingPage from "../Assets/LandingPage.jpg";
+import { useNavigate } from "react-router";
 const Home = () => {
+  const nav=useNavigate();
+  const navigate=()=>{
+    nav("/login");
+  }
   return (
     <div className="min-h-screen  flex flex-col justify-between bg-gray-100">
       <header className="bg-white shadow-md py-4">
@@ -47,12 +52,12 @@ const Home = () => {
               Manage your drug inventory with ease and accuracy using our
               state-of-the-art system.
             </p>
-            <a
-              href="#"
+            <button
+              onClick={navigate}
               className="bg-white text-indigo-600 py-2 px-4 rounded shadow hover:bg-gray-200"
             >
               Get Started
-            </a>
+            </button>
           </div>
         </section>
         <div className="border m-[1rem]">
