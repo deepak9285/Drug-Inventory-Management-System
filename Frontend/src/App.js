@@ -1,16 +1,32 @@
-
-import Login from './Components/Auth/Login';
-import Singnup from './Components/Auth/Singnup';
-import Home from './Components/Home';  // Corrected import statement
-import Dashboard from './Components/Institution/Sidebar/Inventory/Dashboard';
-import MedicineSearchDialog from './Components/Institution/Sidebar/Inventory/MedicineSearchDialog';
+import Login from "./Components/Auth/Login";
+import Signup from "./Components/Auth/Singnup";
+import Sidebar from "./Components/Institution/Sidebar/Sidebar";
+import Home from "./Components/Home"; // Corrected import statement
+//import InstituteDashboard from "./Components/Institution/Sidebar/Inventory/Dashboard";
+//import InstituteContainer from "./Components/Institution/InstituteContainer";
+//import Inventory from "./Components/Institution/Sidebar/Inventory";
+//import Orders from "./Components/Institution/Sidebar/Orders"
+//import Analytics from "./Components/Institution/Sidebar/Analytics";
+//import MedicineSearchDialog from "./Components/Institution/Sidebar/Inventory/MedicineSearchDialog";
+import { Route } from "react-router";
+import InstituteContainer from "./Components/Institution/InstituteContainer";
 
 function App() {
   return (
     <div className="App">
-      {/* <Home /> */}
-     <Dashboard/>
-     {/* <MedicineSearchDialog/> */}
+      {/* <Route path="/" element={<Home />} />
+      <Route path="/Login" element={<Login />} />
+      <Route path="/Register" element={<Signup />} /> */}
+      {/* <Route path="Institute" element={<InstituteContainer />}>
+        <Route path="InstituteDashboard" element={<InstituteDashboard/>} />
+        <Route path="InstituteAnalytics" element={<Analytics/>} />
+        <Route path="InstituteInventory" element={<Inventory />} />
+        <Route path="InstituteOrders" element={<Orders />} />
+        <Route path="VendorList" element={<InstituteDashboard />} />
+      </Route> */}
+      {/* <MedicineSearchDialog/> */}
+      {/* <Sidebar/> */}
+      <InstituteContainer/>
     </div>
   );
 }
