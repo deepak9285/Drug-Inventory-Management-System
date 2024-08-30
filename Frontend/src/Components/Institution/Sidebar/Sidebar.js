@@ -71,7 +71,7 @@ const Sidebar = () => {
           </li>
           <li
             className="text-gray-800 font-semibold cursor-pointer hover:text-blue-500"
-            onClick={() => navigate("/chat-support")}
+            onClick={() => navigate("/Institute/chat-support")}
           >
             Chat Support
           </li>
