@@ -30,7 +30,7 @@ const Login = () => {
       const result = await response.json();
       setSuccess("User logged in successfully");
       console.log(result);
-      navigate("/Institute");
+      navigate("/LoginSuccessful");
 
       // Retrieve existing users from localStorage
       const existingUsersStr = localStorage.getItem("userData");
